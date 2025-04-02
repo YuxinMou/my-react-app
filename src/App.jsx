@@ -16,7 +16,7 @@ export default function Board(){
         if (squares[i] || calculateWinner(squares)){
             return;
         }
-         const nextSquares = squares.slice();
+        const nextSquares = squares.slice();
         if (xIsNext){
             nextSquares[i] = "X";
         } else{
@@ -24,6 +24,14 @@ export default function Board(){
         }
         setSquares(nextSquares);
         setXIsNext(!xIsNext);
+    }
+
+    const winner = calculateWinner(squares);
+    let status;
+    if (winner) {
+        status = "Winner: " + winner;
+    } else {
+        status = "Next player: " + (xIsNext ? "X" : "O");
     }
     
     return(
